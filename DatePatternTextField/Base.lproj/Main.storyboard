@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iW-xx-cQb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Example View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ExampleViewController" customModule="DatePatternTextField" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gaD-mg-aYg">
+                                <rect key="frame" x="16" y="311" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AMs-2o-wtx"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lb-iW-bL4" userLabel="Cursor view">
+                                <rect key="frame" x="16" y="355" width="343" height="12"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Saz-FW-9rZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gaD-mg-aYg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6TN-ip-rdl"/>
+                            <constraint firstItem="6lb-iW-bL4" firstAttribute="top" secondItem="gaD-mg-aYg" secondAttribute="bottom" id="9vZ-oi-CNn"/>
+                            <constraint firstItem="gaD-mg-aYg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AJx-QP-T0x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gaD-mg-aYg" secondAttribute="trailing" constant="16" id="AW9-r1-vCt"/>
+                            <constraint firstItem="gaD-mg-aYg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KTL-dT-Di7"/>
+                            <constraint firstItem="6lb-iW-bL4" firstAttribute="leading" secondItem="gaD-mg-aYg" secondAttribute="leading" id="RlO-y0-40a"/>
+                            <constraint firstItem="6lb-iW-bL4" firstAttribute="trailing" secondItem="gaD-mg-aYg" secondAttribute="trailing" id="d8c-Fo-3fE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nWA-Wg-CPn"/>
+                    <connections>
+                        <outlet property="cursorView" destination="6lb-iW-bL4" id="uTZ-5n-8Tc"/>
+                        <outlet property="stackView" destination="gaD-mg-aYg" id="Dj2-vm-k8H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kuR-m8-O6s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5iW-xx-cQb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HJO-py-4mI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ey7-5A-We1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Fv-52-QYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-207" y="133"/>
+        </scene>
+    </scenes>
+</document>
