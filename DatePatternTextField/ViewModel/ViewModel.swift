@@ -11,7 +11,7 @@ import UIKit
 
 class ViewModel {
 	
-	let dateFormat = "dd/MM/yyyy"
+	var dateFormat = "dd/MM/yyyy"
 	let separator : Character = "/"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
@@ -21,7 +21,7 @@ class ViewModel {
 		return inputs.count
 	}
 	
-	func addInput(input: Int) {
+	func addInput(_ input: Int) {
 		guard currentNumberOfInputs != maximumNumberOfInputs else {
 			return
 		}

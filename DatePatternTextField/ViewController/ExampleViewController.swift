@@ -67,12 +67,15 @@ class ExampleViewController: UIViewController {
 		
 		let currentField = textField as! CustomTextField
 		
-		guard let index = fields.index(of: currentField),
-			let textInput = currentField.text, let input = Int(textInput) else {
-				return
+		guard
+			let index = fields.index(of: currentField),
+			let textInput = currentField.text,
+			let input = Int(textInput)
+		else {
+			return
 		}
 		
-		viewModel.addInput(input: input)
+		viewModel.addInput(input)
 		
 		guard index < viewModel.maximumNumberOfInputs - 1 else {
 			currentField.setOff()
