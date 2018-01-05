@@ -21,6 +21,8 @@
 		05AD7F0B1FFE962D00ACBD39 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F091FFE962D00ACBD39 /* UIView+Animations.swift */; };
 		05AD7F0D1FFE965700ACBD39 /* UIColor+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F0C1FFE965700ACBD39 /* UIColor+Constant.swift */; };
 		05AD7F0E1FFE965700ACBD39 /* UIColor+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F0C1FFE965700ACBD39 /* UIColor+Constant.swift */; };
+		34421F926C3794C96A25CD20 /* Pods_DatePatternTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6C26DC2B44814016CA6C82 /* Pods_DatePatternTextField.framework */; };
+		DDC21B2A938D85F1A9496197 /* Pods_DatePatternTextFieldTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90AF115F6E26F3DB98D41977 /* Pods_DatePatternTextFieldTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,12 @@
 		05AD7F051FFE88D100ACBD39 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		05AD7F091FFE962D00ACBD39 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		05AD7F0C1FFE965700ACBD39 /* UIColor+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Constant.swift"; sourceTree = "<group>"; };
+		46DAFB30FDE1232119B99648 /* Pods-DatePatternTextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatePatternTextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-DatePatternTextField/Pods-DatePatternTextField.release.xcconfig"; sourceTree = "<group>"; };
+		7921C28896B8E3C1CCEF3034 /* Pods-DatePatternTextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatePatternTextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DatePatternTextField/Pods-DatePatternTextField.debug.xcconfig"; sourceTree = "<group>"; };
+		90AF115F6E26F3DB98D41977 /* Pods_DatePatternTextFieldTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatePatternTextFieldTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D6C26DC2B44814016CA6C82 /* Pods_DatePatternTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatePatternTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E950030B41C27D79DF2F300C /* Pods-DatePatternTextFieldTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatePatternTextFieldTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DatePatternTextFieldTests/Pods-DatePatternTextFieldTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EBC934F39ECFAE48EB7C3FF2 /* Pods-DatePatternTextFieldTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatePatternTextFieldTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DatePatternTextFieldTests/Pods-DatePatternTextFieldTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34421F926C3794C96A25CD20 /* Pods_DatePatternTextField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC21B2A938D85F1A9496197 /* Pods_DatePatternTextFieldTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +84,8 @@
 				05AD7EDC1FFD41FC00ACBD39 /* DatePatternTextField */,
 				05AD7EF11FFD41FC00ACBD39 /* DatePatternTextFieldTests */,
 				05AD7EDB1FFD41FC00ACBD39 /* Products */,
+				D93B52DE5F5E000A86EADFFC /* Pods */,
+				F070CD06E7907A812EA8A690 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +148,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D93B52DE5F5E000A86EADFFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7921C28896B8E3C1CCEF3034 /* Pods-DatePatternTextField.debug.xcconfig */,
+				46DAFB30FDE1232119B99648 /* Pods-DatePatternTextField.release.xcconfig */,
+				E950030B41C27D79DF2F300C /* Pods-DatePatternTextFieldTests.debug.xcconfig */,
+				EBC934F39ECFAE48EB7C3FF2 /* Pods-DatePatternTextFieldTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F070CD06E7907A812EA8A690 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D6C26DC2B44814016CA6C82 /* Pods_DatePatternTextField.framework */,
+				90AF115F6E26F3DB98D41977 /* Pods_DatePatternTextFieldTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05AD7EF71FFD41FC00ACBD39 /* Build configuration list for PBXNativeTarget "DatePatternTextField" */;
 			buildPhases = (
+				8B81748F6CEDF4FC08DDE417 /* [CP] Check Pods Manifest.lock */,
 				05AD7ED61FFD41FC00ACBD39 /* Sources */,
 				05AD7ED71FFD41FC00ACBD39 /* Frameworks */,
 				05AD7ED81FFD41FC00ACBD39 /* Resources */,
+				9C78F0A909F9E3DE6B8FEA9C /* [CP] Embed Pods Frameworks */,
+				EAC1D40EFADB45777D5859AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05AD7EFA1FFD41FC00ACBD39 /* Build configuration list for PBXNativeTarget "DatePatternTextFieldTests" */;
 			buildPhases = (
+				3B23B289101048A49ADE99DF /* [CP] Check Pods Manifest.lock */,
 				05AD7EEA1FFD41FC00ACBD39 /* Sources */,
 				05AD7EEB1FFD41FC00ACBD39 /* Frameworks */,
 				05AD7EEC1FFD41FC00ACBD39 /* Resources */,
+				9010B272A1176A2C551C1041 /* [CP] Embed Pods Frameworks */,
+				EA081D26D2358BCDDAB43337 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +271,110 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B23B289101048A49ADE99DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DatePatternTextFieldTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B81748F6CEDF4FC08DDE417 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DatePatternTextField-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9010B272A1176A2C551C1041 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DatePatternTextFieldTests/Pods-DatePatternTextFieldTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C78F0A909F9E3DE6B8FEA9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DatePatternTextField/Pods-DatePatternTextField-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DatePatternTextField/Pods-DatePatternTextField-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA081D26D2358BCDDAB43337 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DatePatternTextFieldTests/Pods-DatePatternTextFieldTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAC1D40EFADB45777D5859AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DatePatternTextField/Pods-DatePatternTextField-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05AD7ED61FFD41FC00ACBD39 /* Sources */ = {
@@ -399,6 +541,7 @@
 		};
 		05AD7EF81FFD41FC00ACBD39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7921C28896B8E3C1CCEF3034 /* Pods-DatePatternTextField.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -415,6 +558,7 @@
 		};
 		05AD7EF91FFD41FC00ACBD39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46DAFB30FDE1232119B99648 /* Pods-DatePatternTextField.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -431,6 +575,7 @@
 		};
 		05AD7EFB1FFD41FC00ACBD39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E950030B41C27D79DF2F300C /* Pods-DatePatternTextFieldTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -447,6 +592,7 @@
 		};
 		05AD7EFC1FFD41FC00ACBD39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBC934F39ECFAE48EB7C3FF2 /* Pods-DatePatternTextFieldTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

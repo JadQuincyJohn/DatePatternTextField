@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ExampleViewController: UIViewController {
 	
 	@IBOutlet weak var stackView: UIStackView!
 	
 	let viewModel = ViewModel()
+	let disposeBag = DisposeBag()
 	
 	lazy var fields : [CustomTextField] = {
 		return viewModel.inputsOnly.map({
@@ -55,36 +58,6 @@ class ExampleViewController: UIViewController {
 			stackView.insertArrangedSubview(createSeparator(), at: $0)
 		}
 	}
-	
-	//MARK:- Actions
-	@objc func reset(button: UIButton) {
-		viewModel.removeAllInputs()
-		setInitialFocus()
-		fields.forEach { $0.text = nil }
-	}
-	
-	@objc func textFieldDidChange(textField: UITextField) {
-		
-		let currentField = textField as! CustomTextField
-		
-		guard
-			let index = fields.index(of: currentField),
-			let textInput = currentField.text,
-			let input = Int(textInput)
-		else {
-			return
-		}
-		
-		viewModel.addInput(input)
-		
-		guard index < viewModel.maximumNumberOfInputs - 1 else {
-			currentField.setOff()
-			return
-		}
-		
-		let nextField = fields[viewModel.currentNumberOfInputs]
-		nextField.setOn()
-	}
 }
 
 extension ExampleViewController : UITextFieldDelegate {
@@ -122,7 +95,27 @@ fileprivate extension ExampleViewController {
 		textField.textAlignment = .center
 		textField.delegate = self
 		textField.backDelegate = self
-		textField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+		
+		textField.rx.controlEvent(.editingChanged)
+			.subscribe(onNext: { [unowned self] in
+				
+				guard let textInput = textField.text, let input = Int(textInput) else {
+						return
+				}
+				
+				self.viewModel.addInput(input)
+				
+				guard let index = self.fields.index(of: textField), index < self.viewModel.maximumNumberOfInputs - 1 else {
+					textField.setOff()
+					return
+				}
+				
+				let nextField = self.fields[self.viewModel.currentNumberOfInputs]
+				nextField.setOn()
+				
+			})
+			.disposed(by: disposeBag)
+		
 		return textField
 	}
 	
@@ -139,8 +132,14 @@ fileprivate extension ExampleViewController {
 	func createResetButton() -> UIButton {
 		let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
 		button.setTitle("Reset", for: .normal)
-		button.addTarget(self, action: #selector(reset(button:)), for: .touchUpInside)
 		button.setTitleColor(.greenSea, for: .normal)
+		button.rx.tap
+			.subscribe(onNext: { [unowned self] in
+				self.viewModel.removeAllInputs()
+				self.fields.forEach { $0.text = nil }
+				self.setInitialFocus()
+			})
+			.disposed(by: disposeBag)
 		return button
 	}
 }
