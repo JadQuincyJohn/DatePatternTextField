@@ -1,28 +1,27 @@
 //
-//  DatePatternTextFieldTests.swift
+//  ViewModelTests.swift
 //  DatePatternTextFieldTests
 //
-//  Created by Jad  on 03/01/2018.
+//  Created by Jad  on 05/01/2018.
 //  Copyright © 2018 Jad . All rights reserved.
 //
 
 import XCTest
-@testable import DatePatternTextField
 
-class DatePatternTextFieldTests: XCTestCase {
-	
+class ViewModelTests: XCTestCase {
+    
 	var viewModel = ViewModel()
 	
-    override func setUp() {
-        super.setUp()
+	override func setUp() {
+		super.setUp()
 	}
-    
-    override func tearDown() {
-        super.tearDown()
-		viewModel.removeAllInputs()
-    }
 	
-	func test_maximumNumberOfInputs() {
+	override func tearDown() {
+		super.tearDown()
+		viewModel.removeAllInputs()
+	}
+	
+	func test_maximumNumberOfInputsWithSlashSeparator() {
 		// Given
 		// When
 		viewModel.dateFormat = "DD/mm"
@@ -30,9 +29,18 @@ class DatePatternTextFieldTests: XCTestCase {
 		XCTAssertEqual(viewModel.maximumNumberOfInputs, 4)
 	}
 	
+	func test_maximumNumberOfInputsWithPointSeparator() {
+		// Given
+		// When
+		viewModel.separator = "."
+		viewModel.dateFormat = "DD.mm.yy"
+		// Then
+		XCTAssertEqual(viewModel.maximumNumberOfInputs, 6)
+	}
+	
 	func test_addInput() {
 		// Given
-		viewModel.dateFormat = "DD/MM/yyyy"		
+		viewModel.dateFormat = "DD/MM/yyyy"
 		// When
 		viewModel.addInput(1)
 		viewModel.addInput(3)
@@ -97,5 +105,4 @@ class DatePatternTextFieldTests: XCTestCase {
 		// Then
 		XCTAssertEqual(viewModel.currentNumberOfInputs, 0)
 	}
-	
 }

@@ -12,7 +12,7 @@ import UIKit
 class ViewModel {
 	
 	var dateFormat = "dd/MM/yyyy"
-	let separator : Character = "/"
+	var separator : Character = "/"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
 	private var inputs = [Int]()

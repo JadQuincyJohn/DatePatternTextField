@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053D84EB1FFF9D4B00286D2C /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D84EA1FFF9D4B00286D2C /* ViewModelTests.swift */; };
 		05AD7EDE1FFD41FC00ACBD39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7EDD1FFD41FC00ACBD39 /* AppDelegate.swift */; };
 		05AD7EE01FFD41FC00ACBD39 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7EDF1FFD41FC00ACBD39 /* ExampleViewController.swift */; };
 		05AD7EE31FFD41FC00ACBD39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AD7EE11FFD41FC00ACBD39 /* Main.storyboard */; };
 		05AD7EE51FFD41FC00ACBD39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05AD7EE41FFD41FC00ACBD39 /* Assets.xcassets */; };
 		05AD7EE81FFD41FC00ACBD39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AD7EE61FFD41FC00ACBD39 /* LaunchScreen.storyboard */; };
-		05AD7EF31FFD41FC00ACBD39 /* DatePatternTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7EF21FFD41FC00ACBD39 /* DatePatternTextFieldTests.swift */; };
 		05AD7F011FFE7E9400ACBD39 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F001FFE7E9400ACBD39 /* CustomTextField.swift */; };
 		05AD7F021FFE7E9400ACBD39 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F001FFE7E9400ACBD39 /* CustomTextField.swift */; };
 		05AD7F061FFE88D100ACBD39 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD7F051FFE88D100ACBD39 /* ViewModel.swift */; };
@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053D84EA1FFF9D4B00286D2C /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		05AD7EDA1FFD41FC00ACBD39 /* DatePatternTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePatternTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05AD7EDD1FFD41FC00ACBD39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05AD7EDF1FFD41FC00ACBD39 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		05AD7EE71FFD41FC00ACBD39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05AD7EE91FFD41FC00ACBD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05AD7EEE1FFD41FC00ACBD39 /* DatePatternTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatePatternTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		05AD7EF21FFD41FC00ACBD39 /* DatePatternTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePatternTextFieldTests.swift; sourceTree = "<group>"; };
 		05AD7EF41FFD41FC00ACBD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05AD7F001FFE7E9400ACBD39 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		05AD7F051FFE88D100ACBD39 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 		05AD7EF11FFD41FC00ACBD39 /* DatePatternTextFieldTests */ = {
 			isa = PBXGroup;
 			children = (
-				05AD7EF21FFD41FC00ACBD39 /* DatePatternTextFieldTests.swift */,
 				05AD7EF41FFD41FC00ACBD39 /* Info.plist */,
+				053D84EA1FFF9D4B00286D2C /* ViewModelTests.swift */,
 			);
 			path = DatePatternTextFieldTests;
 			sourceTree = "<group>";
@@ -254,8 +254,8 @@
 			files = (
 				05AD7F021FFE7E9400ACBD39 /* CustomTextField.swift in Sources */,
 				05AD7F0B1FFE962D00ACBD39 /* UIView+Animations.swift in Sources */,
+				053D84EB1FFF9D4B00286D2C /* ViewModelTests.swift in Sources */,
 				05AD7F071FFE88D100ACBD39 /* ViewModel.swift in Sources */,
-				05AD7EF31FFD41FC00ACBD39 /* DatePatternTextFieldTests.swift in Sources */,
 				05AD7F0E1FFE965700ACBD39 /* UIColor+Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
