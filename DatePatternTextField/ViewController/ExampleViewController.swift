@@ -73,11 +73,11 @@ class ExampleViewController: UIViewController {
 extension ExampleViewController : UITextFieldDelegate {
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
-		let currentCharacterCount = textField.text?.characters.count ?? 0
+		let currentCharacterCount = textField.text?.count ?? 0
 		if (range.length + range.location > currentCharacterCount){
 			return false
 		}
-		let newLength = currentCharacterCount + string.characters.count - range.length
+		let newLength = currentCharacterCount + string.count - range.length
 		
 		let shouldChangeCharactersIn = newLength <= 1
 		return shouldChangeCharactersIn
