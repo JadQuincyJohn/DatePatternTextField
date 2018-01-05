@@ -18,9 +18,11 @@ class ExampleViewController: UIViewController {
 	let disposeBag = DisposeBag()
 	
 	lazy var fields : [CustomTextField] = {
-		return viewModel.inputsOnly.map({
-			createField(char: $0)
-		})
+		viewModel.inputsOnly.enumerated().map { (index, element) in
+			let field = createField()
+			field.bind(with: viewModel.fieldModels[index])
+			return field
+		}
 	}()
 	
 	override func viewDidLoad() {
@@ -41,7 +43,7 @@ class ExampleViewController: UIViewController {
 	}
 	
 	fileprivate func setupNavBar() {
-		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: createResetButton())
+		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: resetButton)
 	}
 	
 	fileprivate func setupView() {
@@ -60,6 +62,7 @@ class ExampleViewController: UIViewController {
 	}
 }
 
+// TODO make RXCompatible
 extension ExampleViewController : UITextFieldDelegate {
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
@@ -71,6 +74,7 @@ extension ExampleViewController : UITextFieldDelegate {
 		
 		let shouldChangeCharactersIn = newLength <= 1
 		return shouldChangeCharactersIn
+		
 	}
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -85,27 +89,26 @@ extension ExampleViewController : UITextFieldDelegate {
 fileprivate extension ExampleViewController {
 	
 	// Creates a Custom TextField
-	func createField(char : Character) -> CustomTextField {
+	func createField() -> CustomTextField {
 		let textField = CustomTextField.init()
-		textField.placeholder = String.init(char)
 		textField.keyboardType = .numberPad
 		textField.tintColor = .clear
 		textField.textColor = .white
-		textField.font = viewModel.font
 		textField.textAlignment = .center
+		textField.font = viewModel.font
 		textField.delegate = self
 		textField.backDelegate = self
 		
 		textField.rx.controlEvent(.editingChanged)
 			.subscribe(onNext: { [unowned self] in
 				
-				guard let textInput = textField.text, let input = Int(textInput) else {
+				guard let input = textField.text, let index = self.fields.index(of: textField) else {
 						return
 				}
 				
-				self.viewModel.addInput(input)
+				self.viewModel.setInput(input: input, at: index)
 				
-				guard let index = self.fields.index(of: textField), index < self.viewModel.maximumNumberOfInputs - 1 else {
+				guard index < self.viewModel.maximumNumberOfInputs - 1 else {
 					textField.setOff()
 					return
 				}
@@ -128,15 +131,14 @@ fileprivate extension ExampleViewController {
 		return label
 	}
 	
-	// Create a BarButton Item 'Reset'
-	func createResetButton() -> UIButton {
+	// Reset Button
+	var resetButton: UIButton {
 		let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 44))
 		button.setTitle("Reset", for: .normal)
 		button.setTitleColor(.greenSea, for: .normal)
 		button.rx.tap
 			.subscribe(onNext: { [unowned self] in
 				self.viewModel.removeAllInputs()
-				self.fields.forEach { $0.text = nil }
 				self.setInitialFocus()
 			})
 			.disposed(by: disposeBag)
@@ -146,6 +148,7 @@ fileprivate extension ExampleViewController {
 
 extension ExampleViewController : CustomTextFieldDelegate {
 	func userDidTapBackSpace(textField: UITextField) {
+		
 		viewModel.removeLastInput()
 		let field = fields[viewModel.currentNumberOfInputs]
 		field.setOn()

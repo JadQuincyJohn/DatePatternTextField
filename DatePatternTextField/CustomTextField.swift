@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol CustomTextFieldDelegate : class {
 	func userDidTapBackSpace(textField: UITextField)
@@ -15,6 +16,8 @@ protocol CustomTextFieldDelegate : class {
 class CustomTextField: UITextField {
 	
 	weak var backDelegate: CustomTextFieldDelegate?
+	private let disposeBag: DisposeBag = DisposeBag()
+
 	
 	lazy var focusView: UIView = {
 		let focus = UIView()
@@ -28,6 +31,23 @@ class CustomTextField: UITextField {
 	override func deleteBackward() {
 		backDelegate?.userDidTapBackSpace(textField: self)
 	}
+	
+	func bind(with viewModel: FieldViewModel) {
+		
+		setup(with: viewModel)
+		
+		viewModel
+			.value
+			.twoWayBind(with: self.rx.text.orEmpty)
+			.disposed(by: disposeBag)
+		
+	}
+	
+	func setup(with model: FieldViewModel) {
+		placeholder = model.placeHolder
+		text = model.value.value
+	}
+	
 	
 	func setOn() {
 		text = nil

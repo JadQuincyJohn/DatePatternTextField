@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 
 class ViewModel {
@@ -15,28 +16,39 @@ class ViewModel {
 	var separator : Character = "/"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
-	private var inputs = [Int]()
+	
+	lazy var fieldModels: [FieldViewModel] = {
+		inputsOnly.enumerated().map({ (index, character) in
+			var fieldViewModel = DigitViewModel()
+			fieldViewModel.placeHolder = String(character)
+			return fieldViewModel
+		})
+	}()
 	
 	var currentNumberOfInputs: Int {
-		return inputs.count
+		let numberOfInputs = fieldModels.filter {
+			$0.value.value != ""
+		}
+		return numberOfInputs.count
 	}
 	
-	func addInput(_ input: Int) {
-		guard currentNumberOfInputs != maximumNumberOfInputs else {
-			return
-		}
-		inputs.append(input)
+	func setInput(input: String, at index: Int) {
+		fieldModels[index].value.value = input
 	}
 	
 	func removeLastInput() {
-		guard !inputs.isEmpty else {
-			return
+		let field = fieldModels.reversed().first {
+			$0.value.value != ""
 		}
-		inputs.removeLast()
+		field?.value.value = ""
+		
 	}
 	
 	func removeAllInputs() {
-		inputs.removeAll()
+		
+		fieldModels.forEach {
+			$0.value.value = ""
+		}
 	}
 	
 	var maximumNumberOfInputs: Int {
