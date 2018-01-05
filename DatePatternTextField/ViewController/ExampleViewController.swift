@@ -11,7 +11,6 @@ import UIKit
 class ExampleViewController: UIViewController {
 	
 	@IBOutlet weak var stackView: UIStackView!
-	@IBOutlet weak var cursorView: UIView!
 	
 	let viewModel = ViewModel()
 	
@@ -21,44 +20,32 @@ class ExampleViewController: UIViewController {
 		})
 	}()
 	
-	var inputs = [Int]() {
-		didSet {
-			DispatchQueue.main.async { [unowned self] in
-				
-				guard self.fields.count != self.inputs.count else {
-					return
-				}
-				
-				let textField = self.fields[self.inputs.count]
-				self.setFocus(on: textField)
-				textField.becomeFirstResponder()
-			}
-		}
-	}
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Save the date !"
-		configureNavBar()
-		configureView()
-		configureTextFields()
-		inputs = [Int]()
+		setupNavBar()
+		setupView()
+		setupTextFields()
 	}
 	
-	@objc func reset(button: UIButton) {
-		fields.forEach { $0.text = nil }
-		inputs.removeAll()
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		setInitialFocus()
 	}
 	
-	fileprivate func configureNavBar() {
+	fileprivate func setInitialFocus() {
+		fields.first?.setOn()
+	}
+	
+	fileprivate func setupNavBar() {
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: createResetButton())
 	}
 	
-	fileprivate func configureView() {
+	fileprivate func setupView() {
 		view.backgroundColor = .greenSea
 	}
 	
-	fileprivate func configureTextFields() {
+	fileprivate func setupTextFields() {
 		
 		fields.forEach {
 			stackView.addArrangedSubview($0)
@@ -67,6 +54,33 @@ class ExampleViewController: UIViewController {
 		viewModel.indexesOfSeparators.forEach {
 			stackView.insertArrangedSubview(createSeparator(), at: $0)
 		}
+	}
+	
+	//MARK:- Actions
+	@objc func reset(button: UIButton) {
+		viewModel.removeAllInputs()
+		setInitialFocus()
+		fields.forEach { $0.text = nil }
+	}
+	
+	@objc func textFieldDidChange(textField: UITextField) {
+		
+		let currentField = textField as! CustomTextField
+		
+		guard let index = fields.index(of: currentField),
+			let textInput = currentField.text, let input = Int(textInput) else {
+				return
+		}
+		
+		viewModel.addInput(input: input)
+		
+		guard index < viewModel.maximumNumberOfInputs - 1 else {
+			currentField.setOff()
+			return
+		}
+		
+		let nextField = fields[viewModel.currentNumberOfInputs]
+		nextField.setOn()
 	}
 }
 
@@ -81,31 +95,14 @@ extension ExampleViewController : UITextFieldDelegate {
 		
 		let shouldChangeCharactersIn = newLength <= 1
 		return shouldChangeCharactersIn
-		
-	}
-
-	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-		
-		let indexOfTextField = fields.index(of: textField as! CustomTextField)
-		return indexOfTextField == inputs.count
 	}
 	
-	@objc func textFieldDidChange(textField: UITextField) {
-		
-		guard
-			let index = fields.index(of: textField as! CustomTextField),
-			let input = textField.text
-			else {
-				return
-		}
-		
-		inputs.append(Int(input)!)
-		
-		guard index < fields.count - 1 else {
-			textField.resignFirstResponder()
-			setFocusOff()
-			return
-		}
+	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+		return fields.index(of: textField as! CustomTextField) == viewModel.currentNumberOfInputs
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		(textField as! CustomTextField).setOff()
 	}
 }
 
@@ -143,42 +140,12 @@ fileprivate extension ExampleViewController {
 		button.setTitleColor(.greenSea, for: .normal)
 		return button
 	}
-	
-	// TODO change to use only one view
-	func setFocus(on textField: CustomTextField) {
-		
-		textField.text = nil
-		cursorView.subviews.forEach {
-			$0.removeFromSuperview()
-		}
-		
-		let focusRect = CGRect(x: textField.frame.origin.x,
-		                       y: 0,
-		                       width: textField.bounds.width,
-		                       height: 2)
-		
-		let focus = UIView()
-		focus.backgroundColor = .sunFlower
-		focus.frame = focusRect
-		focus.layer.cornerRadius = 4
-		focus.layer.masksToBounds = true
-		cursorView.addSubview(focus)
-		focus.pulsate()
-	}
-	
-	func setFocusOff() {
-		cursorView.subviews.forEach {
-			$0.removeFromSuperview()
-		}
-	}
 }
 
 extension ExampleViewController : CustomTextFieldDelegate {
 	func userDidTapBackSpace(textField: UITextField) {
-		guard inputs.count > 0 else {
-			return
-		}
-		inputs.removeLast()
+		viewModel.removeLastInput()
+		let field = fields[viewModel.currentNumberOfInputs]
+		field.setOn()
 	}
 }
-

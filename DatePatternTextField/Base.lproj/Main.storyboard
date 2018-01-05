@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iW-xx-cQb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iW-xx-cQb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,29 +24,18 @@
                                     <constraint firstAttribute="height" constant="44" id="AMs-2o-wtx"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lb-iW-bL4" userLabel="Cursor view">
-                                <rect key="frame" x="16" y="355" width="343" height="12"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="12" id="Saz-FW-9rZ"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gaD-mg-aYg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6TN-ip-rdl"/>
-                            <constraint firstItem="6lb-iW-bL4" firstAttribute="top" secondItem="gaD-mg-aYg" secondAttribute="bottom" id="9vZ-oi-CNn"/>
                             <constraint firstItem="gaD-mg-aYg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AJx-QP-T0x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gaD-mg-aYg" secondAttribute="trailing" constant="16" id="AW9-r1-vCt"/>
                             <constraint firstItem="gaD-mg-aYg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KTL-dT-Di7"/>
-                            <constraint firstItem="6lb-iW-bL4" firstAttribute="leading" secondItem="gaD-mg-aYg" secondAttribute="leading" id="RlO-y0-40a"/>
-                            <constraint firstItem="6lb-iW-bL4" firstAttribute="trailing" secondItem="gaD-mg-aYg" secondAttribute="trailing" id="d8c-Fo-3fE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="nWA-Wg-CPn"/>
                     <connections>
-                        <outlet property="cursorView" destination="6lb-iW-bL4" id="uTZ-5n-8Tc"/>
                         <outlet property="stackView" destination="gaD-mg-aYg" id="Dj2-vm-k8H"/>
                     </connections>
                 </viewController>

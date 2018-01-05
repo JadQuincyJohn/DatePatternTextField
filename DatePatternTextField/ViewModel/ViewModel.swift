@@ -15,6 +15,30 @@ class ViewModel {
 	let separator : Character = "/"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
+	private var inputs = [Int]()
+	
+	var currentNumberOfInputs: Int {
+		return inputs.count
+	}
+	
+	func addInput(input: Int) {
+		guard currentNumberOfInputs != maximumNumberOfInputs else {
+			return
+		}
+		inputs.append(input)
+	}
+	
+	func removeLastInput() {
+		guard !inputs.isEmpty else {
+			return
+		}
+		inputs.removeLast()
+	}
+	
+	func removeAllInputs() {
+		inputs.removeAll()
+	}
+	
 	var maximumNumberOfInputs: Int {
 		return inputsOnly.count
 	}
