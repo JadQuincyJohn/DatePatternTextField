@@ -38,6 +38,7 @@ class ExampleViewController: UIViewController {
 		setInitialFocus()
 	}
 	
+	// TODO : Drive with viewModel instead of calling directly
 	fileprivate func setInitialFocus() {
 		fields.first?.setOn()
 	}
@@ -52,37 +53,25 @@ class ExampleViewController: UIViewController {
 	
 	fileprivate func setupTextFields() {
 		
-		fields.forEach {
-			stackView.addArrangedSubview($0)
-		}
+		let lowerCasedFormat = viewModel.dateFormat.lowercased()
 		
-		viewModel.indexesOfSeparators.forEach {
-			stackView.insertArrangedSubview(createSeparator(), at: $0)
+		var index = 0
+		lowerCasedFormat.forEach { char in
+			if viewModel.units.contains(String(char)) {
+				stackView.addArrangedSubview(fields[index])
+				index = index + 1
+			}
+			else {
+				stackView.addArrangedSubview(createSeparator(char))
+			}
 		}
 	}
 }
 
-// TODO make RXCompatible
 extension ExampleViewController : UITextFieldDelegate {
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		
-		let currentCharacterCount = textField.text?.count ?? 0
-		if (range.length + range.location > currentCharacterCount){
-			return false
-		}
-		let newLength = currentCharacterCount + string.count - range.length
-		
-		let shouldChangeCharactersIn = newLength <= 1
-		return shouldChangeCharactersIn
-		
-	}
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		return fields.index(of: textField as! CustomTextField) == viewModel.currentNumberOfInputs
-	}
-	
-	func textFieldDidEndEditing(_ textField: UITextField) {
-		(textField as! CustomTextField).setOff()
 	}
 }
 
@@ -106,10 +95,12 @@ fileprivate extension ExampleViewController {
 						return
 				}
 				
+				// Update current input
 				self.viewModel.setInput(input: input, at: index)
 				
+				// If the last input was set => end editing fields
 				guard index < self.viewModel.maximumNumberOfInputs - 1 else {
-					textField.setOff()
+					self.view.endEditing(true)
 					return
 				}
 				
@@ -119,13 +110,19 @@ fileprivate extension ExampleViewController {
 			})
 			.disposed(by: disposeBag)
 		
+		textField.rx.controlEvent(.editingDidEnd)
+			.subscribe(onNext: {
+				textField.setOff()
+			})
+			.disposed(by: disposeBag)
+		
 		return textField
 	}
 	
 	// Creates a Separator Label
-	func createSeparator() -> UILabel {
+	func createSeparator(_ char: Character) -> UILabel {
 		let label = UILabel()
-		label.text = String.init(viewModel.separator)
+		label.text = String.init(char)
 		label.textAlignment = .center
 		label.font = viewModel.font
 		return label

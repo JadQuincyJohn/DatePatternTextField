@@ -12,11 +12,16 @@ import RxSwift
 
 class ViewModel {
 	
-	var dateFormat = "dd/MM/yyyy"
-	var separator : Character = "/"
+	var dateFormat = "dd-MM-yyyy"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
-	
+	var units = ["d","m","y"]
+
+	var separator : Character {
+		let sep = dateFormat.first { !units.contains(String($0)) }
+		return sep!
+	}
+
 	lazy var fieldModels: [FieldViewModel] = {
 		inputsOnly.enumerated().map({ (index, character) in
 			var fieldViewModel = DigitViewModel()
@@ -45,7 +50,6 @@ class ViewModel {
 	}
 	
 	func removeAllInputs() {
-		
 		fieldModels.forEach {
 			$0.value.value = ""
 		}
@@ -53,11 +57,6 @@ class ViewModel {
 	
 	var maximumNumberOfInputs: Int {
 		return inputsOnly.count
-	}
-	
-	var indexesOfSeparators: [Int] {
-		// TODO
-		return [2,5]
 	}
 	
 	var inputsOnly: String {
