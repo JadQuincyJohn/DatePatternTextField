@@ -15,19 +15,12 @@ class ExampleViewController: UIViewController {
 	@IBOutlet weak var stackView: UIStackView!
 	
 	let viewModel = ViewModel()
+	var fields : [CustomTextField] = []
 	let disposeBag = DisposeBag()
-	
-	lazy var fields : [CustomTextField] = {
-		viewModel.inputsOnly.enumerated().map { (index, element) in
-			let field = createField()
-			field.bind(with: viewModel.fieldModels[index])
-			return field
-		}
-	}()
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Save the date !"
+		title = "Set the date !"
 		setupNavBar()
 		setupView()
 		setupTextFields()
@@ -57,14 +50,24 @@ class ExampleViewController: UIViewController {
 		
 		var index = 0
 		lowerCasedFormat.forEach { char in
-			if viewModel.units.contains(String(char)) {
-				stackView.addArrangedSubview(fields[index])
+			if viewModel.units.contains(char) {
+				
+				let field = createField()
+				field.bind(with: viewModel.fieldModels[index])
+				fields.append(field)
+				
+				stackView.addArrangedSubview(field)
 				index = index + 1
 			}
 			else {
 				stackView.addArrangedSubview(createSeparator(char))
 			}
 		}
+		/*
+		viewModel.fieldModels
+			.asDriver()
+			.drive(continueButton.rx.isLoading)
+			.disposed(by: disposeBag)*/
 	}
 }
 

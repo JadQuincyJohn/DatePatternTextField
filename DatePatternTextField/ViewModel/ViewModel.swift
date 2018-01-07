@@ -12,13 +12,19 @@ import RxSwift
 
 class ViewModel {
 	
-	var dateFormat = "dd-MM-yyyy"
+	var dateFormat = "dd/MM/yyyy"
 	let font = UIFont.init(name: "Helvetica-Bold", size: 28)
 	
-	var units = ["d","m","y"]
+	private let separators = Set<Character>([".", "/", "-"])
+	
+	var units : Set<Character> {
+		let set = Set(dateFormat.lowercased())
+		let unitsSet = set.subtracting(separators)
+		return unitsSet
+	}
 
 	var separator : Character {
-		let sep = dateFormat.first { !units.contains(String($0)) }
+		let sep = dateFormat.first { !units.contains($0) }
 		return sep!
 	}
 
@@ -46,7 +52,6 @@ class ViewModel {
 			$0.value.value != ""
 		}
 		field?.value.value = ""
-		
 	}
 	
 	func removeAllInputs() {

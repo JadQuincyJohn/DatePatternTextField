@@ -40,14 +40,12 @@ class CustomTextField: UITextField {
 			.value
 			.twoWayBind(with: self.rx.text.orEmpty)
 			.disposed(by: disposeBag)
-		
 	}
 	
 	func setup(with model: FieldViewModel) {
 		placeholder = model.placeHolder
 		text = model.value.value
 	}
-	
 	
 	func setOn() {
 		text = nil
